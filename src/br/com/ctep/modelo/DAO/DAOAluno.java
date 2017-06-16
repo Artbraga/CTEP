@@ -26,8 +26,5 @@ public class DAOAluno {
         return true;
     }
 
-    public boolean inserirAluno(Aluno aluno){
-        Class.forName("org.apache.jdbc.ClassDriver");
-        Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/coc", "app", "app");
-    }
+
 }
