@@ -18,14 +18,18 @@ public class Main {
         janelaLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janelaLogin.setSize(400, 300);
         janelaLogin.setResizable(false);
+        janelaLogin.setLocationRelativeTo(null);
         janelaLogin.setVisible(true);
-
 
         janelaPrincipal = new JanelaPrincipal();
         janelaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
         janelaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //janelaPrincipal.setVisible(true);
+    }
 
+    public static void abreJanelaPrincipal(){
+        janelaLogin.setVisible(false);
+
+        janelaPrincipal.setVisible(true);
     }
 
 
