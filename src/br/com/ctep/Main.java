@@ -1,35 +1,55 @@
 package br.com.ctep;
 
-import br.com.ctep.telas.JanelaLogin;
-import br.com.ctep.telas.JanelaPrincipal;
+import br.com.ctep.telas.FrameHome;
+import br.com.ctep.telas.FrameLogin;
 
 import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-/**
- * Created by arthur on 16/06/17.
- */
 public class Main {
-    public static JanelaPrincipal janelaPrincipal;
-    public static JanelaLogin janelaLogin;
+    private static JFrame frameLogin;
+    private static JFrame frameHome;
 
     public static void main(String[] args){
 
-        janelaLogin = new JanelaLogin();
-        janelaLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        janelaLogin.setSize(400, 300);
-        janelaLogin.setResizable(false);
-        janelaLogin.setLocationRelativeTo(null);
-        janelaLogin.setVisible(true);
+        frameLogin = new JFrame("Secretaria CTEP");
+        frameLogin.setContentPane(new FrameLogin().panel);
+        frameLogin.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frameLogin.pack();
+        frameLogin.setSize(400, 300);
+        frameLogin.setResizable(false);
+        frameLogin.setLocationRelativeTo(null);
+        frameLogin.setVisible(true);
+        frameLogin.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirmacao = JOptionPane.showConfirmDialog(null, "Você deseja sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
+                if(confirmacao == JOptionPane.YES_OPTION)
+                    System.exit(0);
+            }
+        });
 
-        janelaPrincipal = new JanelaPrincipal();
-        janelaPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        janelaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        frameHome = new JFrame("Secretaria CTEP");
+        frameHome.setContentPane(new FrameHome().panel);
+        frameHome.pack();
+        frameHome.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frameHome.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        frameHome.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirmacao = JOptionPane.showConfirmDialog(null, "Você deseja sair?", "Confirmação", JOptionPane.YES_NO_OPTION);
+                if(confirmacao == JOptionPane.YES_OPTION)
+                    System.exit(0);
+            }
+        });
+
     }
 
     public static void abreJanelaPrincipal(){
-        janelaLogin.setVisible(false);
 
-        janelaPrincipal.setVisible(true);
+        frameHome.setVisible(true);
     }
 
 
